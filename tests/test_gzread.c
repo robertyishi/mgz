@@ -19,7 +19,7 @@ static bool test_gzread_helper(size_t size, unsigned int seed) {
 
     gzFile gzf = gzopen("test.gz", "rb");
     if (!gzf) {
-        printf("test_gzread_helper: failed to gzopen().\n");
+        fprintf(stderr, "test_gzread_helper: failed to gzopen().\n");
         free(data);
         return false;
     }
@@ -44,10 +44,9 @@ static bool test_gzread_helper(size_t size, unsigned int seed) {
 
 bool test_gzread() {
     size_t testSizes[30] = {
-        1,       2,       3,       4,       5,       6,
-        7,       8,       1023,    1024,    1025,    16383,
-        16384,   16385,   32767,   32768,   32769,   65535,
-        65536,   65537,   1048575, 1048576, 1048577, 2097151,
+        1,       2,       3,       4,       5,       6,       7,       8,
+        1023,    1024,    1025,    16383,   16384,   16385,   32767,   32768,
+        32769,   65535,   65536,   65537,   1048575, 1048576, 1048577, 2097151,
         2097152, 2097153, 4258475, 9652480, 0};
     for (int i = 0; i < 30; ++i) {
         if (testSizes[i] == 0) break;
